@@ -1,8 +1,8 @@
 {
-  "name": "vue-demo",
+  "name": "aladdin",
   "version": "1.0.0",
-  "description": "A Vue.js project",
-  "author": "唐杜 <tangdu@qccr.com>",
+  "description": "aladdin",
+  "author": "唐杜 tangdu0228@aliyun.com",
   "private": true,
   "scripts": {
     "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
@@ -15,7 +15,12 @@
   },
   "dependencies": {
     "vue": "^2.5.2",
-    "vue-router": "^3.0.1"
+    "vue-router": "^3.0.1",
+    "vuex": "^3.0.1",
+    "axios": "^0.17.1",
+    "vue-virtual-scroller": "^0.10.6",
+    "iview-area": "^1.5.16",
+    "js-cookie": "^2.2.0"
   },
   "devDependencies": {
     "iview": "^2.8.0",
@@ -75,7 +80,11 @@
     "webpack": "^3.6.0",
     "webpack-bundle-analyzer": "^2.9.0",
     "webpack-dev-server": "^2.9.1",
-    "webpack-merge": "^4.1.0"
+    "webpack-merge": "^4.1.0",
+    "extract-text-webpack-plugin": "^3.0.2",
+    "webpack-dev-middleware": "^1.10.0",
+    "webpack-hot-middleware": "^2.18.0",
+    "eventsource-polyfill": "^0.9.6"
   },
   "engines": {
     "node": ">= 6.0.0",
