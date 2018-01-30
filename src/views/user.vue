@@ -23,6 +23,7 @@ export default {
     ]),
     loadUser () {
       this.fetchUserAction()
+      //this.FETCH_USER_SUC({data: { loginname: '唐杜222', score: 100 }})
     }
   }
 }

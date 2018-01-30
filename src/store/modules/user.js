@@ -17,7 +17,6 @@ const actions = {
      * @param {isRefresh} [Boolean]
      */
   fetchUserAction ({ commit, state, dispatch }, params) {
-    state.isFetching = true
     commit(types.FETCH_USER_SUC, {
       data: { loginname: '唐杜', score: 100 }
     })

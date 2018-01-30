@@ -44,6 +44,20 @@ const devWebpackConfig = merge(baseWebpackConfig, {
       poll: config.dev.poll,
     }
   },
+  devServer: {
+    port: 80,
+    historyApiFallback: true,
+    hot: true,
+    inline: true,
+    stats: { colors: true },
+    proxy: {
+        '/api': {
+            target: 'http://localhost:9091/xnyxshop',
+            pathRewrite: {'^/api' : '/'},
+            changeOrigin: true
+        }
+     }
+  },
   plugins: [
     new webpack.DefinePlugin({
       'process.env': require('../config/dev.env')
