@@ -1,16 +1,29 @@
 <template>
-  <div>
-      <img src="static/img/bak.png" width="100%" height="100%" /> 
-      
-
+  <div style="padding:2px;">
+      <div class="font2" style="font-size:25px;">
+        <p>
+        @也许
+        </p>
+        你在Same的这些时光.
+      </div>
+    
       <div class="userinfo">
           <img :src="user.data.userAvatar" class='user_img'/>
-          <div class="wen font1">@{{user.data.userName}}</div>
+          <div class="wen font2">@{{user.data.userName}}</div>
+      </div>
+      
+      
+
+      <div  class="wen font2" >
+          2018，你的关键词是:
       </div>
 
-      
+      <div  class="wen font1" >
+          <span style="font-size:70px;">"{{user.data.keyword}}"</span>
+      </div>
+
       <div class="muststat" >
-          <div class="wen font2">最关心你的人</div>
+          <div class="font2" style="font-size:20px;">最关心你的人</div>
           <div v-for="item in user.data.mustStarUsers" class="img"  style="margin:20px; 0px;">
             <div>{{item.username}}</div>
             <Badge :count="item.usernum" class-name='demo-badge-alone' overflow-count="10000">
@@ -19,51 +32,6 @@
           </div>
         <div style="clear:both;"></div>
       </div> 
-
-      <div class="wen font2">你的标签云</div>
-      <img :src="user.data.mayun" width="100%" height="100%" />
-
-
-      <div class="font1 wen" style="margin:20px 0px;">
-        About.Me,{{this.$moment(user.data.registerDate).fromNow()}}加入same,来看看时光给你留下了什么吧.
-      </div>
-      
-      <Timeline>
-        <TimelineItem color="green">
-            <Icon type="trophy" slot="dot"></Icon>
-            <span>{{this.$moment(user.data.firstPublishSense.created_at*1000).format("YYYY-MM-DD HH")}} 第一篇动态 For [{{user.data.firstPublishSense.channel.name}}]</span>
-            <div class="wen font2" > 
-              {{user.data.firstPublishSense.txt}}
-            </div>
-            <div :style="{height: '414px',width: '380px','background-size': '100% 100%','background-image':`url(${user.data.firstPublishSense.photo})`}"></div>
-        </TimelineItem>
-        <TimelineItem>
-          <span>{{this.$moment(user.data.maxPublishSense.created_at*1000).fromNow()}} 最新的动态 For [{{user.data.maxPublishSense.channel.name}}]</span>
-          <div  class="wen font2" >
-            {{user.data.maxPublishSense.txt}}
-          </div>
-           <div :style="{height: '414px',width: '380px','background-size': '100% 100%','background-image':`url(${user.data.maxPublishSense.photo})`}"></div>
-        </TimelineItem>
-
-        <TimelineItem color="red">
-          最火的动态 For [{{user.data.moreStarSense.channel.name}}]
-          火力值:<Tag color="red">{{user.data.moreStarSense.likes*2+user.data.moreStarSense.views}}</Tag>
-          赞:<Tag color="yellow">{{user.data.moreStarSense.likes}}</Tag>
-          <div  class="wen font2" >
-            {{user.data.moreStarSense.txt}}
-          </div>
-          <div :style="{height: '414px',width: '380px','background-size': '100% 100%','background-image':`url(${user.data.moreStarSense.photo})`}"></div>
-        </TimelineItem>
-    </Timeline>
-
-      <div  class="wen font2" >
-          <div id="channelPie" style="height:414px;width:414px;" ></div>
-      </div>
-
-      <div  class="wen font2" >
-          2018，你的关键词是<span style="font-size:40px;">"{{user.data.keyword}}"</span>
-      </div>
-      <img src="static/img/ki.png" width="100%" height="100%" /> 
 
   </div>
 </template>
@@ -164,6 +132,7 @@ export default {
 
 <style>
 .wen {
+  text-align: center;
   font-size: 20px;
 }
 .must_img {
@@ -172,6 +141,9 @@ export default {
   height: 90px;
   clear: both;
 }
+.muststat{
+  margin-top:50px;
+}
 .muststat div.img {
   margin: 0px 29px;
   float: left;
@@ -179,14 +151,14 @@ export default {
 .demo-badge-alone {
   background: #5fb2cc !important;
 }
-.user_img {
+.userinfo img {
   border-radius: 100px;
   width: 200px;
   height: 200px;
-  margin: 60px 105px 20px 105px;
 }
-.userinfo div {
-  margin: 10px 140px;
+.userinfo  {
+  margin-top:30px;
+  text-align: center;
 }
 </style>
 

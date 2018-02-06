@@ -52,7 +52,7 @@ const devWebpackConfig = merge(baseWebpackConfig, {
     stats: { colors: true },
     proxy: {
         '/api': {
-            target: 'http://localhost:9091/xnyxshop',
+            target: 'http://localhost:9088/api',
             pathRewrite: {'^/api' : '/'},
             changeOrigin: true
         }

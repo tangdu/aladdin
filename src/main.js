@@ -6,7 +6,11 @@ import router from './router'
 import store from './store'
 import iView from 'iview'
 import 'iview/dist/styles/iview.css'
+import moment from 'moment'
+
 Vue.use(iView)
+moment.locale('zh-cn')
+Vue.prototype.$moment = moment
 
 Vue.config.productionTip = false
 

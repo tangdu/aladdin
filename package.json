@@ -14,16 +14,19 @@
     "build": "node build/build.js"
   },
   "dependencies": {
-    "vue": "^2.5.2",
-    "vue-router": "^3.0.1",
-    "vuex": "^3.0.1",
     "axios": "^0.17.1",
-    "vue-virtual-scroller": "^0.10.6",
     "iview-area": "^1.5.16",
-    "js-cookie": "^2.2.0"
+    "js-cookie": "^2.2.0",
+    "moment": "^2.20.1",
+    "vue": "^2.5.2",
+    "vue-moment": "^3.1.0",
+    "vue-router": "^3.0.1",
+    "vue-virtual-scroller": "^0.10.6",
+    "vuex": "^3.0.1"
   },
   "devDependencies": {
     "iview": "^2.8.0",
+    "echarts": "^4.0.2",
     "autoprefixer": "^7.1.2",
     "babel-core": "^6.22.1",
     "babel-eslint": "^8.2.1",
