@@ -1,8 +1,8 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import User from '../views/user'
+import Report from '../views/report'
 import Words from '../views/words'
-import Default from '../Default'
+import App from '../App'
 
 Vue.use(Router)
 export default new Router({
@@ -10,16 +10,13 @@ export default new Router({
     {
       path: '/app',
       components: {
-        default: Default
-      },
-      children: [
-        {path: 'user', component: User}
-      ]
+        default: App
+      }
     },
     {
-      path: '/user',
+      path: '/report',
       components: {
-        page: User
+        page: Report
       }
     },
     {
