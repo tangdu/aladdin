@@ -1,5 +1,5 @@
 import * as types from '../constants/types'
-// import axios from 'axios'
+import axios from 'axios'
 
 const state = {
   isFetching: false,
@@ -7,7 +7,7 @@ const state = {
     senseList: [],
     channel: []
   },
-  channelId: '1288952',
+  channelId: '1056740',
   sensesOffset: 0,
   userId: 15752075,
   error: ''
@@ -15,12 +15,17 @@ const state = {
 const getters = {}
 const actions = {
   fetchSenseAction ({ commit, state, dispatch }, params) {
-    this.$ajax.get('/api/same/query_senses', {
+    if (state.senses_offset < 0) {
+      return false
+    }
+    axios({
+      url: '/api/same/query_senses',
+      method: 'get',
       params: {
-        channelId: this.channelId,
-        offset: this.senses_offset,
-        userId: this.userId,
-        url: this.url
+        channelId: state.channelId,
+        offset: state.senses_offset,
+        userId: state.userId,
+        url: '/activity/senses/channel/{channel_id}?order=hostest&from=-7%20day'
       }
     }).then(resp => {
       var result = resp.data.data

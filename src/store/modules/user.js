@@ -3,6 +3,7 @@ import axios from 'axios'
 
 const state = {
   isFetching: false,
+  isDianzan: false,
   'data': {
     'mayun': 'http://192.168.1.110:8000/static/15936403_word.jpg',
     'keyword': '\u776b\u6bdb',
@@ -421,19 +422,15 @@ const state = {
       }, {
         'name': 'EDC ☞日常随身装备论',
         'value': 4
-      }, {
-        'name': '旅行的意义',
-        'value': 3
-      }, {
-        'name': '无彩妆会死星人',
-        'value': 2
       }],
-      'channels': ['Antonia', 'E.M.L.P', 'DALUK', 'EDC ☞日常随身装备论', '旅行的意义', '无彩妆会死星人']
+      'channels': ['Antonia', 'E.M.L.P', 'DALUK']
     },
     'userAvatar': 'https://qiniu1.same.com/avatar/1515382550_207626.jpg',
     'userId': 15936403,
     'userName': 'Antonia'
-  }
+  },
+  'senseData': [],
+  'senseOffset': 0
 }
 const getters = {}
 const actions = {
@@ -443,12 +440,64 @@ const actions = {
       method: 'get',
       url: '/api/supersame/same_user_analyse',
       params: {
-        userId: 4515194
+        userId: params.userId
       }
     }).then((res) => {
       commit(types.FETCH_USER_SUC, {
         data: res.data.data
       })
+    }).catch((error) => {
+      console.log(error)
+    })
+  },
+  fetchUserInfoAction ({ commit, state, dispatch }, params) {
+    axios({
+      method: 'get',
+      url: '/api/supersame/same_user_info',
+      params: {
+        userId: params.userId
+      }
+    }).then((res) => {
+      commit(types.FETCH_USER_SUC, {
+        data: res.data.data
+      })
+    }).catch((error) => {
+      console.log(error)
+    })
+  },
+  fetchUserSenseAction ({ commit, state, dispatch }, params) {
+    if (state.senseOffset < 0) {
+      return false
+    }
+    axios({
+      method: 'get',
+      url: '/api/same/userSense',
+      params: {
+        userId: params.userId,
+        offset: state.senseOffset
+      }
+    }).then((res) => {
+      commit(types.FETCH_USER_SENSE_SUC, {
+        data: res.data.data
+      })
+    }).catch((error) => {
+      console.log(error)
+    })
+  },
+  dianzanUserSenseAction ({ commit, state, dispatch }, params) {
+    if (!params.userId) {
+      return false
+    }
+    axios({
+      method: 'get',
+      url: '/api/same/like_sense',
+      params: {
+        userId: params.userId,
+        senseId: params.senseId,
+        channelId: params.channelId
+      }
+    }).then((res) => {
+      // this.$Message.success('点赞成功')
     }).catch((error) => {
       console.log(error)
     })
@@ -459,7 +508,14 @@ const mutations = {
   [types.FETCH_USER_SUC] (state, action) {
     state.data = action.data
     state.isFetching = false
-    console.log(action.data)
+  },
+  [types.DIANZAN_USER_SUC] (state, action) {
+    state.isDianzan = true
+  },
+  [types.FETCH_USER_SENSE_SUC] (state, action) {
+    state.senseData = state.senseData.concat(action.data.results)
+    state.senseOffset = action.data.offset
+    state.isFetching = false
   }
 }
 

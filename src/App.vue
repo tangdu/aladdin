@@ -1,5 +1,5 @@
 <template>
-  <div class="app">
+  <div class="main">
       <BarMenuVue></BarMenuVue>
       <div class="container">
         <Row>
@@ -15,8 +15,8 @@
 </template>
 
 <script>
-import BarMenuVue from '../components/BarMenu.vue'
-import SubMenuVue from '../components/SubMenu.vue'
+import BarMenuVue from './components/BarMenu.vue'
+import SubMenuVue from './components/SubMenu.vue'
 
 export default {
   components: {
@@ -27,7 +27,7 @@ export default {
 </script>
 
 <style lang="css">
-.app{
+.main{
       background: #eee;
       padding-top: 1px;
 }

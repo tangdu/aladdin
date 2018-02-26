@@ -1,8 +1,17 @@
 <template>
-  <div style="padding:5px;">
-      <div class="font2" style="font-size:15px;">
-        <p>
-        @{{$moment(user.data.registerDate).format("LL")}} Join Same
+  <div>
+      <div class="font2" style="height:736px;font-size:15px;background-image:url('static/img/IMG_3697.PNG')">
+        <p style="padding-top:200px;margin-left:20px;font-size:30px;color:white;">
+            你在{{$moment(user.data.registerDate).format("LL")}}
+        </p>
+        <p style="margin-top:10px;margin-left:200px;font-size:30px;color:white;">
+            登录same星球
+        </p>
+        <p style="margin-top:10px;margin-left:50px;font-size:30px;color:white;">
+            same陪你走过了
+        </p>
+        <p style="margin-top:10px;margin-left:210px;font-size:30px;color:white;">
+            <span style="font-size:45px;color:yellow;">{{$moment().diff($moment(user.data.registerDate), 'days')}}</span>天
         </p>
       </div>
     
